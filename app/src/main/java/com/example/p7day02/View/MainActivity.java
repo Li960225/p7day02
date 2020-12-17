@@ -7,30 +7,33 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.p7day02.BannerContract.BannerContract;
+import com.example.p7day02.Base.BaseActivity;
 import com.example.p7day02.Bean.BanBean;
+import com.example.p7day02.Presenter.BannerPresenter;
 import com.example.p7day02.R;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements BannerContract.IBannerView {
+public class MainActivity extends BaseActivity<BannerPresenter> implements BannerContract.IBannerView {
 
     private TextView tvTitle;
-    private BannerContract.IBannerPresenter iBannerPresenter;
+
+    public void initData() {
+        presenter.getData();
+    }
+
+    public void initView() {
+        tvTitle = findViewById(R.id.tv_title);
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        initView();
-        initData();
+    protected BannerPresenter getPresenter() {
+        return new BannerPresenter();
     }
 
-    private void initData() {
-        iBannerPresenter.getData();
-    }
-
-    private void initView() {
-        tvTitle = findViewById(R.id.tv_title);
+    @Override
+    protected int getLayout() {
+        return R.layout.activity_main;
     }
 
     @Override

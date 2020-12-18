@@ -1,4 +1,4 @@
-package com.example.p7day02.Net;
+package com.example.mvplibrary.Net;
 
 import com.google.gson.Gson;
 

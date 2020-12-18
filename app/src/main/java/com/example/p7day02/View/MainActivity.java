@@ -6,8 +6,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.mvplibrary.Base.BaseActivity;
 import com.example.p7day02.BannerContract.BannerContract;
-import com.example.p7day02.Base.BaseActivity;
 import com.example.p7day02.Bean.BanBean;
 import com.example.p7day02.Presenter.BannerPresenter;
 import com.example.p7day02.R;
@@ -44,5 +44,13 @@ public class MainActivity extends BaseActivity<BannerPresenter> implements Banne
     @Override
     public void onFail(String error) {
         Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (presenter != null){
+            presenter.detachView();
+        }
     }
 }

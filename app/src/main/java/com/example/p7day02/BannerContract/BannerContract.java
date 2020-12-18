@@ -1,12 +1,12 @@
 package com.example.p7day02.BannerContract;
 
+import com.example.mvplibrary.Net.NetCallBack;
 import com.example.p7day02.Bean.BanBean;
-import com.example.p7day02.Net.NetCallBack;
 
 import java.util.List;
 
 public class BannerContract {
-    public interface IBannerView{
+    public interface IBannerView {
         void onSuccess(List<BanBean.BannerlistBean> bannerlistBeans);
         void onFail(String error);
     }
